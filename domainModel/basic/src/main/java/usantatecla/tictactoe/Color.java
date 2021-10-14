@@ -4,7 +4,7 @@ import usantatecla.utils.Console;
 
 enum Color {
 
-	X
+	X,
 	O,
 	NULL;
 

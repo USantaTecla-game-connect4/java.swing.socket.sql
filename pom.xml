@@ -12,7 +12,7 @@
     </modules>
 
     <artifactId>solution.java.swing.socket.sql</artifactId>
-    <groupId>usantatecla.tictactoe</groupId>
+    <groupId>usantatecla.connect4</groupId>
     <version>0.0.1-SNAPSHOT</version>
     <packaging>pom</packaging>
 
