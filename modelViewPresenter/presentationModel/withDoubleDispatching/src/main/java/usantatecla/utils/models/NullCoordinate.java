@@ -19,25 +19,6 @@ class NullCoordinate implements Coordinate {
         return true;
     }
 
-    @Override
-    public Direction getDirection(Coordinate coordinate) {
-        return Direction.NULL;
-    }
-
-    @Override
-    public boolean inHorizontal(Coordinate coordinate) {
-        return false;
-    }
-
-    @Override
-    public boolean inVertical(Coordinate coordinate) {
-        return false;
-    }
-
-    @Override
-    public boolean inMainDiagonal() {
-        return false;
-    }
 
     @Override
     public String toString() {
@@ -52,6 +33,16 @@ class NullCoordinate implements Coordinate {
     @Override
     public boolean equals(Object obj) {
         return super.equals(obj);
+    }
+
+    @Override
+    public Coordinate[] getInDirectionCoordinates(Direction direction, int amount) {
+        return null;
+    }
+
+    @Override
+    public Coordinate getInDirectionCoordinate(Direction direction) {
+        return null;
     }
     
 }

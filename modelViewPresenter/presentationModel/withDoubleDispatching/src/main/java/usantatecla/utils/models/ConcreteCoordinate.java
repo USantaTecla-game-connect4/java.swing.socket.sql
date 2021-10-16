@@ -7,9 +7,6 @@ public class ConcreteCoordinate implements Coordinate {
 	protected int row;
 	protected int column;
 
-	public ConcreteCoordinate() {
-	}
-
 	public ConcreteCoordinate(int row, int column) {
 		this.row = row;
 		this.column = column;
@@ -20,42 +17,17 @@ public class ConcreteCoordinate implements Coordinate {
 		return false;
 	}
 
-	@Override
-	public Direction getDirection(Coordinate coordinate) {
-		if (this.equals(coordinate)){
-			return Direction.NULL;
+	public ConcreteCoordinate[] getInDirectionCoordinates(Direction direction, int amount){
+		ConcreteCoordinate[] coordinates = new ConcreteCoordinate[amount];
+		coordinates[0] = this;
+		for(int i=1; i<amount; i++){
+			coordinates[i] = coordinates[i-1].getInDirectionCoordinate(direction);
 		}
-		if (this.inHorizontal(coordinate)) {
-			return Direction.HORIZONTAL;
-		}
-		if (this.inVertical(coordinate)) {
-			return Direction.VERTICAL;
-		}
-		if (this.inMainDiagonal() && coordinate.inMainDiagonal()) {
-			return Direction.MAIN_DIAGONAL;
-		}
-		return Direction.NULL;
+		return coordinates;
 	}
 
-	@Override
-	public boolean inHorizontal(Coordinate coordinate) {
-		if (coordinate.isNull()){
-			return false;
-		}
-		return this.row == ((ConcreteCoordinate) coordinate).row;
-	}
-
-	@Override
-	public boolean inVertical(Coordinate coordinate) {
-		if (coordinate.isNull()){
-			return false;
-		}
-		return this.column == ((ConcreteCoordinate) coordinate).column;
-	}
-
-	@Override
-	public boolean inMainDiagonal() {
-		return this.row - this.column == 0;
+	public ConcreteCoordinate getInDirectionCoordinate(Direction direction) {
+		return new ConcreteCoordinate(this.row + direction.getRow(), this.column + direction.getColumn());
 	}
 
 	public int getRow() {
